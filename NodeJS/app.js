@@ -29,23 +29,15 @@ var token = '';
 
 app.get('/upcomingevents', function(req, res) {
 	var ven = req.query.venue;
-	console.log(ven);
 	var venueurl = 'https://api.songkick.com/api/3.0/search/venues.json?query='+ven+'&apikey=VCPlzGI58EL9xZ1B';
-	console.log(venueurl);
 	request(venueurl, function (error, response, body) {
 	    if (!error && response.statusCode == 200) {
 	    	body = JSON.parse(body);
-	    	console.log(body);
 	    	if (body.resultsPage.results.venue && body.resultsPage.results.venue[0].id) {
-	        	console.log(body.resultsPage.results.venue[0].id); // 输出请求到的body
-    	        // json = body;
     	        var venid = body.resultsPage.results.venue[0].id;
     	        var upeveurl = 'https://api.songkick.com/api/3.0/venues/' + venid + '/calendar.json?apikey=VCPlzGI58EL9xZ1B';
-    	        console.log(upeveurl);
     	        request(upeveurl, function (error, response, body) {
     			    if (!error && response.statusCode == 200) {
-    			    	console.log(upeveurl);
-    			        console.log(body); // 输出请求到的body
     			        json = body;
     			        // console.log(json);
     			        res.setHeader('Content-Type', 'application/json');
