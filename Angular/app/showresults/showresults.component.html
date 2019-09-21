@@ -23,7 +23,6 @@
       <tr *ngFor="let event of storagearray; index as i" [class.highlighted]="venueid == event.id">
         <td>{{i+1}}</td>
         <td [innerHTML]="favortime(i)"></td>
-        <!-- <td><a matTooltip="{{event.name}}" class="anc" href="javascript:void(0)" (click)="detail(i)">{{event.name}}</a></td> -->
         <td><button matTooltip="{{event.name}}" type="button" class="btn btn-link" (click)="favordetail(i)">{{event.name}}</button></td>
         <td [innerHTML]="favorcategory(i)"></td>
         <td [innerHTML]="favorvenuename(i)"></td>

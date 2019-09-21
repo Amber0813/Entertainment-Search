@@ -27,7 +27,6 @@ export class SearchService {
   getGeolocation() {
     const url = 'http://ip-api.com/json';
     let json = this.http.get(url);
-    // console.log(json);
     return json;
 
   }
@@ -35,8 +34,6 @@ export class SearchService {
   getAutoData(form) {
     let params = new HttpParams()
     .set("keyword", form.keyword);
-    // const aurl = 'https://app.ticketmaster.com/discovery/v2/suggest?apikey=2E0k5OleWAH3kJx3fDWFF5Bjz8FKILGY&keyword=' + form.keyword;
-    // console.log(aurl);
     let url = "http://mycsci571homeworkann.us-west-1.elasticbeanstalk.com/autocomplete";
     let json = this.http.get<any>(url, { params: params });
     console.log(json);
@@ -56,7 +53,6 @@ export class SearchService {
     console.log(JSON.stringify(form.geo));
     let response = null;
     response = this.http.get(url, { params: params });
-    // console.log(response);
 
     response.subscribe(
       data => {

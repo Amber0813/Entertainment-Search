@@ -39,17 +39,8 @@ export class LocalstoreService {
     if (localStorage.getItem(STORAGE_KEY) == null)
       return {};
     var str = localStorage.getItem(STORAGE_KEY);
-    // console.log(str);
     var items = JSON.parse(str);
     return items;
-    // return this.storage.get(STORAGE_KEY);
-    // var str = localStorage.getItem(STORAGE_KEY);
-    // var json = JSON.parse(str);
-    // // console.log(json.list.length);
-    // if (json.list.length == 0)
-    //   return [];
-    // else 
-    //   return json.list;
   }
 
   delete(key) {
@@ -60,15 +51,6 @@ export class LocalstoreService {
     delete items[key];
     var jstr = JSON.stringify(items);
     localStorage.setItem(STORAGE_KEY, jstr);
-    // const currentTodoList = this.storage.get(STORAGE_KEY);
-    // var currentTodoList = localStorage.getItem(STORAGE_KEY);
-    // var json = JSON.parse(currentTodoList);
-    // json.list.splice(i, 1);
-    // // console.log(json);
-    // var jinput = JSON.stringify(json);
-    // // this.storage.set(STORAGE_KEY, currentTodoList);
-    // // console.log(this.storage.get(STORAGE_KEY));
-    // localStorage.setItem(STORAGE_KEY, jinput);
   }
 
 }

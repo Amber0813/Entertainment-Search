@@ -34,10 +34,8 @@ export class ShowresultsComponent implements OnInit {
 
   resultjson = this.searchService.jsonData;
   testhtml = '';
-  // showresult = true;
   tableresult = false;
   noresult = false;
-  // detaildisable = true;
   currentid = -1;
   result = this.searchService.result;
   favorite = this.searchService.favor;
@@ -61,33 +59,16 @@ export class ShowresultsComponent implements OnInit {
     
     this.nofavor = false;
     if (this.detailService.details == false) {
-      // this.searchService.progressbar = false;
-      // this.progress = setTimeout(()=>{
         this.searchService.progressbar = true;
         this.searchService.showresult = true;
         this.resultDisplay();
-        // this.result = "btn btn-primary";
-        // this.favorite = "btn btn-outline-primary";
-      // },1000);
-      // this.searchService.showresult = true;
     }
     else if (this.searchService.showresult == false) {
-      // this.searchService.progressbar = false;
-      // this.progress = setTimeout(()=>{
         this.searchService.progressbar = true;
         this.searchService.showresult = false;
         this.flag = false;
         this.resultDisplay();
-        // this.result = "btn btn-primary";
-        // this.favorite = "btn btn-outline-primary";
-      // },1000);
-      // this.searchService.showresult = false;
-      // this.flag = false;
     }
-    // this.resultDisplay();
-    // this.result = "btn btn-primary";
-    // this.favorite = "btn btn-outline-primary";
-    
   }
 
   favor() {
@@ -100,7 +81,6 @@ export class ShowresultsComponent implements OnInit {
     this.nofavor = false;
     this.flag = true;
     this.searchService.showresult = false;
-      // this.flag = true;
       if (Object.values(this.lstoreService.getStorekey()).length == 0) {
         this.nofavor = true;
       }
@@ -110,28 +90,17 @@ export class ShowresultsComponent implements OnInit {
         this.storagearray = Object.values(this.searchService.storehashmap).length == 0 ? null : Object.values(this.searchService.storehashmap);
         console.log(this.storagearray);
       }
-    // }
   }
 
   resultDisplay() {
-    // if (this.detailService.details == false) {
-    //   this.searchService.showresult = true;
-    // }
-    // else {
-    //   this.searchService.showresult = false;
-    //   this.flag = false;
-    // }
-    // this.resultjson = this.searchService.getEventResult();
     if (this.searchService.jsonData != null) {
       console.log(this.searchService.jsonData);
       if (this.searchService.jsonData.page.totalElements == 0) {
         this.noresult = true;
-        // this.testhtml = "no result";
       }
       else {
         this.tableresult = true;
         this.tableresult = true;
-        //this.testhtml = this.searchService.jsonData._embedded.events[0]._embedded.attractions[0].name;
       }
     }
   }
@@ -190,7 +159,6 @@ export class ShowresultsComponent implements OnInit {
     this.searchService.favor = "btn btn-outline-primary";
     this.searchService.issearch = false;
     this.searchService.isfavorate = false;
-    // this.detailService.details = true;
     this.searchService.showresult = false;
     this.detailService.details = true;
     this.searchService.disablebutton = false;
@@ -223,12 +191,9 @@ export class ShowresultsComponent implements OnInit {
     this.searchService.favor = "btn btn-outline-primary";
     this.searchService.issearch = false;
     this.searchService.isfavorate = false;
-    // this.detailService.details = true;
     this.searchService.showresult = false;
     this.searchService.disablebutton = false;
     this.nofavor = false;
-    // this.detailService.getDetails(this.searchService.jsonData._embedded.events[i].id);
-    // this.searchService.progressbar = false;
     if (this.detailService.id != i) {
     this.searchService.progressbar = false;
       this.progress = setTimeout(()=>{
@@ -242,23 +207,12 @@ export class ShowresultsComponent implements OnInit {
         this.detailService.getDetails(this.searchService.jsonData._embedded.events[i].id);
         this.flag = false;
     }
-    // this.progress = setTimeout(()=>{
-    //   this.searchService.progressbar = true;
-    //   this.detailService.getDetails(this.searchService.jsonData._embedded.events[i].id);
-    //   this.flag = false;
-    // },1000);
-    // this.flag = false;
     console.log(this.detailService.details)
     if (this.detailService.id == i && this.detailService.details == true) {
       if (this.detailService.artist || this.detailService.venue || this.detailService.upcomingevent)
         this.detailService.event = false;
     }
     else {
-      // this.progress = setTimeout(()=>{
-      //   this.searchService.progressbar = true;
-      //   this.detailService.getDetails(this.searchService.jsonData._embedded.events[i].id);
-      //   this.flag = false;
-      // },1000);
       this.detailService.id = i;
       this.currentid = i;
       this.venueid = this.searchService.jsonData._embedded.events[i].id;
@@ -277,13 +231,11 @@ export class ShowresultsComponent implements OnInit {
   showdetail() {
     this.searchService.isfavorate = false;
     this.searchService.issearch = false;
-    // this.detailService.details = true;
     this.searchService.showresult = false;
     this.detailService.event = true;
-      this.detailService.artist = false;
-      this.detailService.venue = false;
-      this.detailService.upcomingevent = false;
-    // this.flag = false;
+    this.detailService.artist = false;
+    this.detailService.venue = false;
+    this.detailService.upcomingevent = false;
     this.progress = setTimeout(()=>{
       this.detailService.details = true;
       this.flag = false;
@@ -300,7 +252,6 @@ export class ShowresultsComponent implements OnInit {
       this.storagearray = Object.values(this.searchService.storehashmap).length == 0 ? null : Object.values(this.searchService.storehashmap);
     }
     else {
-      // this.lstoreService.store(item);
       this.searchService.storehashmap = this.lstoreService.getStorekey();
       this.storagearray = Object.values(this.searchService.storehashmap).length == 0 ? null : Object.values(this.searchService.storehashmap);
     }
@@ -308,10 +259,8 @@ export class ShowresultsComponent implements OnInit {
   }
 
   deleteitem(i) {
-    // console.log(i);
     var hashmap = this.lstoreService.getStorekey();
     var array = Object.values(this.searchService.storehashmap);
-    // console.log(this.storagearray);
     var key = this.storagearray[i].id;
     this.lstoreService.delete(key);
     this.searchService.storehashmap = this.lstoreService.getStorekey();
@@ -319,8 +268,6 @@ export class ShowresultsComponent implements OnInit {
     if (this.lstoreService.getStorekey() == null || Object.values(this.lstoreService.getStorekey()).length == 0) {
       this.nofavor = true;
     }
-    // console.log(this.storagearray);
-    // this.searchService.templocal = this.lstoreService.getStorekey();
   }
 
   favortime(i) {
@@ -363,7 +310,6 @@ export class ShowresultsComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.resultDisplay();
   }
 
 }

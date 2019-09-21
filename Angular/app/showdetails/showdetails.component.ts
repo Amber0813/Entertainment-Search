@@ -120,7 +120,6 @@ export class ShowdetailsComponent implements OnInit {
     this.detailService.details = false;
     this.searchService.showresult = true;
     this.searchService.slidein = false;
-    // this.detailService.event = false;
   }
 
   storeitem() {
@@ -129,12 +128,10 @@ export class ShowdetailsComponent implements OnInit {
     if (this.searchService.storehashmap[item.id]){
       this.lstoreService.delete(item.id);
       this.searchService.storehashmap = this.lstoreService.getStorekey();
-      // this.storagearray = Object.values(this.storehashmap);
     }
     else {
       this.lstoreService.store(item);
       this.searchService.storehashmap = this.lstoreService.getStorekey();
-      // this.storagearray = Object.values(this.storehashmap);
     }
   }
 
@@ -147,7 +144,6 @@ export class ShowdetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 
@@ -173,8 +169,5 @@ export class Showseatmap {
     hide() {
       this.isdisplay = false;
     }
-  // onNoClick(): void {
-  //   this.dialogRef.close();
-  // }
 
 }

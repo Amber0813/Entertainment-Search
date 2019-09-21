@@ -43,7 +43,6 @@ export class DetailService {
         console.log(data);
       }
     );
-    // this.getUpcomingEvents();
   }
 
   getArtist() {

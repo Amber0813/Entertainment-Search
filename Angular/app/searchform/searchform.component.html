@@ -1,13 +1,12 @@
 <div class="container jumbotron">
   <p sclass="col-sm" style="text-align:center">Entertainment Event Ticket Search</p>
-  <!-- <div class="wrapform form-group"> -->
    <form class="form" (ngSubmit)="onSubmit()">
       <div class="row form-group">
         <div class="col-sm-3">Keyword<span style="color: red">*</span></div>
         <div class="col-sm-8">
-          <input type="text" name="keyword" id="keyword" class="form-control" [class]="red" required minlength="1" placeholder="Enter Artist, Team or Event Name(eg. Lakers)" value="" matInput [(ngModel)]="form.keyword"
+          <input type="text" name="keyword" id="keyword" class="form-control" required minlength="1" placeholder="Enter Artist, Team or Event Name(eg. Lakers)" value="" matInput [(ngModel)]="form.keyword"
             #keyword="ngModel" [matAutocomplete]="auto"  (ngModelChange)="doFilter()" required>
-            <div *ngIf="(keyword.invalid || checkspace()) && (keyword.dirty || keyword.touched)" class="alert">Please enter a word.</div>
+            <div *ngIf="keyword.invalid && (keyword.dirty || keyword.touched)" class="alert">Please enter a word.</div>
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let autoComp of autoComps | async" [value]="autoComp.name">
               {{ autoComp.name }}
@@ -51,5 +50,4 @@
     </div>
       <input type="hidden" name="gjson" id="gjson">
   </form>
-  <!-- </div> -->
 </div>

@@ -27,7 +27,6 @@ export class SearchformComponent implements OnInit {
   autoComps;
   resultjson = null;
   timeout: any;
-  // testhtml='';
 
   constructor(public searchService: SearchService, public detailService: DetailService, public lstoreService: LocalstoreService) { }
 
@@ -113,14 +112,11 @@ export class SearchformComponent implements OnInit {
     this.detailService.venue = false;
     this.detailService.upcomingevent = false;
     this.timeout = setTimeout(()=>{
-      // this.searchService.search(this.form);
       this.searchService.isclear = false;
       this.searchService.showresult = true;
       this.detailService.details = false;
       this.searchService.progressbar = true;
     },1000);
-    // this.searchService.showresult = true;
-    // this.detailService.details = false;
   }
   onClear(keyword, linput) {
     this.searchService.result = "btn btn-primary";
@@ -152,12 +148,6 @@ export class SearchformComponent implements OnInit {
   checkspace() {
     var str = this.form.keyword;
     var boole = str.trim().length === 0;
-    if (boole) {
-      this.red = "red";
-    }
-    else {
-      this.red = "";
-    }
     return boole;
   }
 

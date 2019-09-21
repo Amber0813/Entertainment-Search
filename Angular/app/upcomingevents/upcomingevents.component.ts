@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailService } from '../Service/detail.service';
 import { trigger, transition, animate, style, state,stagger,query } from '@angular/animations'
-// import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-upcomingevents',
@@ -77,14 +76,9 @@ export class UpcomingeventsComponent implements OnInit {
 
   showless() {
     this.slidein = true;
-    // this.fun = setTimeout(()=> {
-      this.show = false;
-      this.moreishidden = false;
-      this.lessishidden = true;
-    // },800);
-    // this.show = false;
-    // this.moreishidden = false;
-    // this.lessishidden = true;
+    this.show = false;
+    this.moreishidden = false;
+    this.lessishidden = true;
   }
 
   onchange(str) {
