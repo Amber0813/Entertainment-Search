@@ -1,0 +1,63 @@
+<div *ngIf="this.detailService.artist">
+  <div *ngIf="this.detailService.artistData">
+    <div class="alert alert-warning" *ngIf="!this.detailService.artistData.error == 'true'">No records.</div>
+    <div class="alert alert-warning" *ngIf="!this.detailService.artistData.artists">No records.</div>
+    <div *ngFor="let artist of this.detailService.artistData.artists; index as i">
+      <div style="text-align: center" class="h" *ngIf="artist.name">{{artist.name}}</div>
+      <!-- <div class="table-responsive-sm table-responsive-md">
+          <table class="table table-striped"  *ngIf="artist.followers">
+              <tr *ngIf="artist.name">
+                <td class="tname">Name</td>
+                <td>{{artist.name}}</td>
+              </tr>
+              <tr *ngIf="artist.followers">
+                <td class="tname">Followers</td>
+                <td>{{artist.followers}}</td>
+              </tr>
+              <tr *ngIf="artist.popularity">
+                <td class="tname">Popularity</td>
+                <td><div><div class="number centered">{{artist.popularity}}</div>
+                  <div class="round centered"><round-progress [current]="artist.popularity" [color]="'rgb(133,180,59)'" [max]="100" [clockwise]="false" [radius]="20" [stroke]="4"></round-progress></div></div></td>
+              </tr>
+              <tr *ngIf="artist.external_urls">
+                <td class="tname">Check At</td>
+                <td><a href="{{artist.external_urls.spotify}}"  target="_blank">Spotify</a></td>
+              </tr>
+            </table>
+      </div> -->
+      
+
+
+
+      <div class="row" *ngIf="artist.name && artist.followers">
+        <div class="col-4">Name</div>
+        <div class="col-8">{{artist.name}}</div>
+      </div>
+      <div class="row double" *ngIf="artist.followers">
+        <div class="col-4">Followers</div>
+        <div class="col-8">{{artist.followers}}</div>
+      </div>
+      <div class="row" *ngIf="artist.popularity">
+        <div class="col-4">Popularity</div>
+        <div class="col-8">
+          <div class="number">{{artist.popularity}}</div>
+          <div class="round"><round-progress [current]="artist.popularity" [color]="'rgb(133,180,59)'" [max]="100" [clockwise]="false" [radius]="20" [stroke]="4"></round-progress></div>
+        </div>
+        
+      </div>
+      <div class="row  double" *ngIf="artist.external_urls">
+        <div class="col-4">Check At</div>
+        <div class="col-8"><a href="{{artist.external_urls.spotify}}"  target="_blank">Spotify</a></div>
+      </div>
+
+
+      <div class="row imagetiles" *ngIf="artist.images && artist.images.length != 0">
+        <div class="col-sm-4" *ngFor="let image of artist.images;index as j">
+          <a href="{{image}}" target="_blank"><img src="{{image}}" width="250" alt=""></a>
+        </div>
+      <div  class="alert alert-warning" *ngIf="artist.images && artist.images.length == 0">
+          No records.
+      </div>
+    </div>
+  </div>
+</div>

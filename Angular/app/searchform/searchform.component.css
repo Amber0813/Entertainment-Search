@@ -1,0 +1,41 @@
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+
+.col-sm-9 {
+    margin: auto;
+}
+.jumbotron {
+    padding: 30px;
+    border: 1px solid;
+    border-color: rgb(200,200,200);
+}
+.wrapform {
+    width: 800px;
+    margin: auto;
+}
+.result {
+    margin: auto;
+    width: 1000px;
+}
+.resultbuttons {
+    margin: auto;
+    text-align: center;
+}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+ }
+input[type="number"] {
+    -moz-appearance:textfield;
+}
+.ng-invalid.ng-touched:not(form) {
+    border: 2px solid red;
+  }
+.alert {
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    color: red;
+}
+.red {
+    border: 2px solid red;
+}

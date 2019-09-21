@@ -1,0 +1,64 @@
+<div *ngIf="this.detailService.upcomingevent">
+  <div *ngIf="this.detailService.upcomingData">
+
+    <div class="row">
+    <div class="col-sm-3"><select name="cate" class="form-control" #cate (change)="onchange($event.target.value)">
+      <option *ngFor="let cat of cats" [value]="cat">{{cat}}</option>
+    </select></div>
+    <div class="col-sm-3"><select name="ord" class="form-control" [disabled]="disable" #ord (change)="orderchange($event.target.value)">
+        <option *ngFor="let order of orders" [value]="order">{{order}}</option>
+      </select></div>
+    </div>
+
+    <div *ngIf="this.detailService.upcomingnum == 0"><br><br>
+      <div class="alert alert-warning">No records.</div>
+    </div>
+    <div *ngIf="this.detailService.upcomingnum > 0">
+      <div class="display card" *ngFor="let event of this.detailService.upcomingData.resultsPage.results.event | slice: 0:5; index as i">
+        <div *ngIf="event.displayName">
+            <a href="{{event.uri}}" target="_blank">{{event.displayName}}</a>
+        </div>
+        <div *ngIf="event.start.time; else notime">
+          <span style="color: rgb(236,162,129)"> <span *ngIf="event.performance.length != 0 && event.performance[0].artist && event.performance[0].artist.displayName">Artist: {{event.performance[0].artist.displayName}}</span></span> {{event.start.date | date}} {{event.start.time}}
+        </div>
+        <ng-template #notime><div><span style="color: rgb(236,162,129)"><span *ngIf="event.performance.length != 0 && event.performance[0].artist && event.performance[0].artist.displayName">Artist: {{event.performance[0].artist.displayName}}</span></span> {{event.start.date  | date}}</div></ng-template>
+        <div *ngIf="event.type">
+          {{event.type}}
+        </div>
+      </div>
+      <div *ngIf="this.detailService.upcomingnum > 5"  class="showbutton"><button class="btn btn-primary" [hidden]="moreishidden" type="button" (click)="showmore()">Show More</button></div>
+
+
+
+
+
+        <div  *ngIf="this.detailService.upcomingnum > 5 && show == true"> 
+            <div [@parentAnimation] class="card parent" *ngFor="let event of this.detailService.upcomingData.resultsPage.results.event | slice: 5; index as i">
+                
+              <div class="child">
+              <div *ngIf="event.displayName">
+                    <a href="{{event.uri}}" target="_blank">{{event.displayName}}</a>
+                </div>
+                <div *ngIf="event.start.time; else notime">
+                  <span style="color: rgb(236,162,129)"> <span *ngIf="event.performance.length != 0 && event.performance[0].artist && event.performance[0].artist.displayName">Artist: {{event.performance[0].artist.displayName}}</span></span> {{event.start.date | date}} {{event.start.time}}
+                </div>
+                <ng-template #notime><div><span style="color: rgb(236,162,129)"> <span *ngIf="event.performance.length != 0 && event.performance[0].artist && event.performance[0].artist.displayName">Artist: {{event.performance[0].artist.displayName}}</span></span> {{event.start.date | date}}</div></ng-template>
+                <div *ngIf="event.type">
+                  {{event.type}}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+        <div *ngIf="show == true" class="showbutton"><button class="btn btn-primary" type="button" [hidden]="lessishidden" (click)="showless()">Show Less</button></div>
+      </div>
+    </div>
+  
+</div>
+
+

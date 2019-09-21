@@ -1,0 +1,106 @@
+<div [@slideInOut] *ngIf="this.detailService.details">
+  <div *ngIf="this.detailService.detailData != null">
+      <div class="header">{{this.detailService.detailData.name}}</div>
+      <div class="list"><button type="button" class="btn btn-outline-primary" (click)="back()"><List</button></div>
+      <div class="twifav">
+          <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw&text=Check out {{this.detailService.detailData.name}} at {{this.detailService.detailData._embedded.venues[0].name}}. Website: {{this.detailService.detailData.url}} %23CSCI571EventSearch" target="_blank"><img src="http://csci571.com/hw/hw8/Images/Twitter.png" width="45"  height="45"></a>
+          <button type="button" class="btn btn-outline-primary" (click)="storeitem()"><i class="material-icons md-14" *ngIf="searchService.storehashmap.hasOwnProperty(this.detailService.detailData.id)" style="color: rgb(255, 174, 0)">star</i><i  class="material-icons md-14" *ngIf="!searchService.storehashmap.hasOwnProperty(this.detailService.detailData.id)">star_border</i></button>
+      </div>
+      <div class="links">
+        <!-- Nav tabs -->
+        <!-- <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+            </li>
+          </ul> -->
+          
+          <!-- Tab panes -->
+          <!-- <div class="tab-content">
+            <div class="tab-pane container active" id="home">...1</div>
+            <div class="tab-pane container fade" id="menu1">...2</div>
+            <div class="tab-pane container fade" id="menu2">...3</div>
+          </div> -->
+
+          <!-- <div  class="row nav nav-tabs justify-content-end" id="nav-tab1"  role="tablist">
+            <a class="nav-link active" data-toggle="tab" href="#home"  role="tab" (click)="event()" aria-controls="nav-home" aria-selected="true">Event</a>
+            <a class="nav-link" data-toggle="tab" href="#menu1"  role="tab" (click)="artistteam()" aria-controls="nav-profile" aria-selected="false">Artist/Team</a>
+            <a class="nav-link" data-toggle="tab" href="#menu2"  role="tab" (click)="venue()" aria-controls="nav-contact" aria-selected="false">Venue</a>
+            <a class="nav-link" data-toggle="tab" href="#menu3"  role="tab" (click)="upcomingevents()" aria-controls="nav-contact" aria-selected="false">UpcomingEvents</a>
+          </div>
+
+
+            <div class="row nav nav-tabs justify-content-end" id="nav-tab2" role="tablist">
+              <a class="nav-link active" data-toggle="tab" href="#home"  role="tab" (click)="event()" aria-controls="nav-home" aria-selected="true">Event</a>
+              <a class="nav-link" data-toggle="tab" href="#menu1"  role="tab" (click)="artistteam()" aria-controls="nav-profile" aria-selected="false">Artist/Team</a>
+              <a class="nav-link" data-toggle="tab" href="#menu2"  role="tab" (click)="venue()" aria-controls="nav-contact" aria-selected="false">Venue</a>
+              <a class="nav-link" data-toggle="tab" href="#menu3"  role="tab" (click)="upcomingevents()" aria-controls="nav-contact" aria-selected="false">UpcomingEvents</a>
+            </div> -->
+
+
+        <div class="row nav nav-tabs justify-content-end" id="nav-tab1" role="tablist">
+            <a class="col-xs-1 nav-item nav-link active" data-toggle="tab" href="#nav-home" (click)="event()">Event</a>
+            <a class="col-xs-1 nav-item nav-link" data-toggle="tab" href="#nav-profile" (click)="artistteam()">Artist/Teams</a>
+            <a class="col-xs-1 nav-item nav-link" data-toggle="tab" href="#nav-profile" (click)="venue()">Venue</a>
+            <a class="col-xs-1 nav-item nav-link" data-toggle="tab" href="#nav-profile" (click)="upcomingevents()">Upcoming Events</a>
+          </div>
+        
+            <div class="row nav nav-tabs justify-content-end" id="nav-tab2" role="tablist">
+            <a class="col-xs-1 nav-item nav-link active" data-toggle="tab" href="#nav-home" (click)="event()"><span style="font-size: 12px">Event</span></a>
+            <a class="col-xs-1 nav-item nav-link" data-toggle="tab" href="#nav-profile" (click)="artistteam()"><span style="font-size: 12px">Artist</span></a>
+            <a class="col-xs-1 nav-item nav-link" data-toggle="tab" href="#nav-profile" (click)="venue()"><span style="font-size: 12px">Venue</span></a>
+            <a class="col-xs-1 nav-item nav-link" data-toggle="tab" href="#nav-profile" (click)="upcomingevents()"><span style="font-size: 12px">Upcoming</span></a>
+          </div>
+        <!-- <button type="button" class="btn btn-link" (click)="event()"[disabled]="detailService.event">Event</button>
+        <button type="button" class="btn btn-link" (click)="artistteam()"[disabled]="detailService.artist">Artist/Team</button>
+        <button type="button" class="btn btn-link" (click)="venue()" [disabled]="detailService.venue">Venue</button>
+        <button type="button" class="btn btn-link" (click)="upcomingevents()"[disabled]="detailService.upcomingevent">UpcomingEvents</button> -->
+      </div>
+      <p></p>
+      <app-artist></app-artist>
+      <app-venue></app-venue>
+      <app-upcomingevents></app-upcomingevents>
+      <div *ngIf="this.detailService.event">
+          <div class="row" *ngIf="this.detailService.detailData._embedded.attractions">
+            <div class="col">Artist/Team(s)</div>
+            <div class="col" [innerHTML]="artist()"></div>
+          </div>
+          <div class="row" *ngIf="this.detailService.detailData._embedded.venues">
+            <div class="col">Venue</div>
+            <div class="col">{{this.detailService.detailData._embedded.venues[0].name}}</div>
+          </div>
+          <div class="row" *ngIf="this.detailService.detailData.dates">
+            <div class="col">Time</div>
+            <div class="col">{{this.detailService.detailData.dates.start.localDate | date}} {{this.detailService.detailData.dates.start.localTime ? this.detailService.detailData.dates.start.localTime : ''}}</div>
+          </div>
+          <div class="row" *ngIf="this.detailService.detailData.classifications">
+            <div class="col">Category</div>
+            <div class="col" [innerHTML]="category()"></div>
+          </div>
+          <div class="row" *ngIf="this.detailService.detailData.priceRanges">
+            <div class="col">Price Range</div>
+            <div class="col" [innerHTML]="pricerange()"></div>
+          </div>
+          <div class="row" *ngIf="this.detailService.detailData.dates.status.code">
+            <div class="col">Ticket Status</div>
+            <div class="col">{{this.detailService.detailData.dates.status.code}}</div>
+          </div>
+          <div class="row" *ngIf="this.detailService.detailData.url">
+            <div class="col">Buy Ticket At</div>
+            <div class="col"><a href="{{this.detailService.detailData.url}}" target="_blank">Ticketmaster</a></div>
+          </div>
+          <div class="row" *ngIf="this.detailService.detailData.url">
+            <div class="col">Seat Map</div>
+            <div class="col"><a href="javascript:void(0)" (click)="openDialog()">View Seat Map Here</a></div>
+          </div>
+      </div>
+  </div>
+</div>
+
+

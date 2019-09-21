@@ -1,0 +1,101 @@
+<div class="col-sm-9"><p></p></div>
+<div class="col-sm-9">
+  <div class="resultbuttons">
+    <button type="button" [class]="searchService.result" (click)="show()">Results</button>
+    <button type="button" [class]="searchService.favor" (click)="favor()">Favorites</button>
+  </div>
+  <p class="col-sm-9"></p>
+
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated"  [hidden]="this.searchService.progressbar" role="progressbar"
+    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+    </div>
+  </div>
+
+
+  <div class="nofavor" class="alert alert-warning" *ngIf="!searchService.isclear && nofavor && !searchService.showresult && flag">No records.</div>
+  <div class="showfavor" *ngIf="!searchService.isclear && storagearray && !searchService.showresult && flag && !showdet">
+    <table class="table  table-hover table-responsive-sm">
+      <tr>
+        <th>#</th><th>Date</th><th>Event</th><th>Category</th><th>Venue Info</th><th>Delete</th>
+      </tr>
+      <tr *ngFor="let event of storagearray; index as i" [class.highlighted]="venueid == event.id">
+        <td>{{i+1}}</td>
+        <td [innerHTML]="favortime(i)"></td>
+        <!-- <td><a matTooltip="{{event.name}}" class="anc" href="javascript:void(0)" (click)="detail(i)">{{event.name}}</a></td> -->
+        <td><button matTooltip="{{event.name}}" type="button" class="btn btn-link" (click)="favordetail(i)">{{event.name}}</button></td>
+        <td [innerHTML]="favorcategory(i)"></td>
+        <td [innerHTML]="favorvenuename(i)"></td>
+        <td><button type="button(i)" class="btn btn-outline-primary" (click)="deleteitem(i)"><i class="material-icons md-18">delete</i></button></td>
+      </tr>
+    </table>
+  </div>
+
+
+  <app-showdetails [hidden]="flag"></app-showdetails>
+
+    <div [@slideInOut] *ngIf="searchService.showresult && searchService.slidein && !searchService.issearch && !searchService.isfavorate">
+        <div class="alert alert-danger"  *ngIf="!detailService.details && searchService.showresult && searchService.jsonData != null && ((searchService.jsonData.page && searchService.jsonData.page.totalElements == 0) || searchService.jsonData.error =='true')">
+            No results.
+          </div>
+          <div *ngIf="!detailService.details && searchService.showresult && searchService.jsonData != null && searchService.jsonData.page && searchService.jsonData.page.totalElements != 0">
+            <div class=" button"><button type="button" class="btn btn-outline-primary" [disabled]="this.searchService.disablebutton" (click)="showdetail()">Details></button></div>
+            <table class="table  table-hover table-responsive-sm">
+              <tr>
+                <th>#</th><th>Date</th><th>Event</th><th>Category</th><th>Venue Info</th><th>Favorite</th>
+              </tr>
+              <tr *ngFor="let event of searchService.jsonData._embedded.events; index as i" [class.highlighted]="i == detailService.id">
+                <td>{{i+1}}</td>
+                <td [innerHTML]="time(i)"></td>
+                <td><button matTooltip="{{event.name}}" type="button" class="btn btn-link" (click)="detail(i)">{{event.name | truncate: [0,35]}}</button></td>
+                <td [innerHTML]="category(i)"></td>
+                <td [innerHTML]="venuename(i)"></td>
+                <td><button type="button" class="btn btn-outline-primary" (click)="storeitem(i)"><i class="material-icons md-14" *ngIf="searchService.storehashmap.hasOwnProperty(event.id)" style="color: rgb(255, 174, 0)">star</i><i  class="material-icons md-14" *ngIf="!searchService.storehashmap.hasOwnProperty(event.id)">star_border</i></button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      <div [@slideIn] *ngIf="searchService.showresult && !searchService.slidein  && !searchService.issearch && !searchService.isfavorate">
+        <div class="alert alert-danger"  *ngIf="!detailService.details && searchService.showresult && searchService.jsonData != null && ((searchService.jsonData.page && searchService.jsonData.page.totalElements == 0) || searchService.jsonData.error =='true')">
+          No results.
+        </div>
+        <div *ngIf="!detailService.details && searchService.showresult && searchService.jsonData != null && searchService.jsonData.page && searchService.jsonData.page.totalElements != 0">
+          <div class=" button"><button type="button" class="btn btn-outline-primary" [disabled]="this.searchService.disablebutton" (click)="showdetail()">Details></button></div>
+          <table class="table  table-hover table-responsive-sm">
+            <tr>
+              <th>#</th><th>Date</th><th>Event</th><th>Category</th><th>Venue Info</th><th>Favorite</th>
+            </tr>
+            <tr *ngFor="let event of searchService.jsonData._embedded.events; index as i" [class.highlighted]="i == detailService.id">
+              <td>{{i+1}}</td>
+              <td [innerHTML]="time(i)"></td>
+              <td><button matTooltip="{{event.name}}" type="button" class="btn btn-link" (click)="detail(i)">{{event.name | truncate: [0,35]}}</button></td>
+              <td [innerHTML]="category(i)"></td>
+              <td [innerHTML]="venuename(i)"></td>
+              <td><button type="button" class="btn btn-outline-primary" (click)="storeitem(i)"><i class="material-icons md-14" *ngIf="searchService.storehashmap.hasOwnProperty(event.id)" style="color: rgb(255, 174, 0)">star</i><i  class="material-icons md-14" *ngIf="!searchService.storehashmap.hasOwnProperty(event.id)">star_border</i></button></td>
+            </tr>
+          </table>
+        </div>
+      </div>  
+      <div *ngIf="searchService.showresult && !searchService.slidein && (searchService.issearch || searchService.isfavorate)">
+          <div class="alert alert-danger"  *ngIf="!detailService.details && searchService.showresult && searchService.jsonData != null && ((searchService.jsonData.page && searchService.jsonData.page.totalElements == 0) || searchService.jsonData.error =='true')">
+            No results.
+          </div>
+          <div *ngIf="!detailService.details && searchService.showresult && searchService.jsonData != null && searchService.jsonData.page && searchService.jsonData.page.totalElements != 0">
+            <div class=" button"><button type="button" class="btn btn-outline-primary" [disabled]="this.searchService.disablebutton" (click)="showdetail()">Details></button></div>
+            <table class="table table-hover table-responsive-sm">
+              <tr>
+                <th scope="col">#</th><th scope="col">Date</th><th scope="col">Event</th><th scope="col">Category</th><th scope="col">Venue Info</th><th scope="col">Favorite</th>
+              </tr>
+              <tr *ngFor="let event of searchService.jsonData._embedded.events; index as i" [class.highlighted]="i == detailService.id">
+                <td scope="col">{{i+1}}</td>
+                <td scope="col" [innerHTML]="time(i)"></td>
+                <td scope="col"><button matTooltip="{{event.name}}" type="button" class="btn btn-link" (click)="detail(i)">{{event.name | truncate: [0,35]}}</button></td>
+                <td scope="col" [innerHTML]="category(i)"></td>
+                <td scope="col" [innerHTML]="venuename(i)"></td>
+                <td scope="col"><button type="button" class="btn btn-outline-primary" (click)="storeitem(i)" ><i class="material-icons md-14" *ngIf="searchService.storehashmap.hasOwnProperty(event.id)" style="color: rgb(255, 174, 0)">star</i><i  class="material-icons md-14" *ngIf="!searchService.storehashmap.hasOwnProperty(event.id)">star_border</i></button></td>
+              </tr>
+            </table>
+          </div>
+        </div> 
+</div>

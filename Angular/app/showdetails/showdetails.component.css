@@ -1,0 +1,28 @@
+.header {
+    text-align: center;
+}
+.links {
+    text-align: right;
+}
+.twifav {
+    text-align: right;
+}
+.bar {
+    text-align: right;
+}
+table td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    #nav-tab1 { display: none; }  
+}
+
+@media screen and (min-width: 500px) {
+    #nav-tab2 { display: none; }   
+}

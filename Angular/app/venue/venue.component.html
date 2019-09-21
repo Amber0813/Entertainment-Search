@@ -1,0 +1,85 @@
+<div *ngIf="this.detailService.venue">
+  <div *ngIf="this.detailService.venueData != null">
+      <div class="venueheader">
+        <b>{{this.detailService.venueData._embedded.venues[0].name}}</b>
+      </div>
+      <table class="table table-striped table-responsive-sm">
+        <tr *ngIf="this.detailService.venueData._embedded.venues[0].address">
+          <td class="name">Address</td>
+          <td class="cont"><span *ngIf="this.detailService.venueData._embedded.venues[0].address.line1">{{this.detailService.venueData._embedded.venues[0].address.line1}}</span><span  *ngIf="!this.detailService.venueData._embedded.venues[0].address.line1">N/A</span></td>
+        </tr>
+        <tr *ngIf="this.detailService.venueData._embedded.venues[0].city">
+          <td class="name">City</td>
+          <td class="cont">{{this.detailService.venueData._embedded.venues[0].city.name}}<span  *ngIf="this.detailService.venueData._embedded.venues[0].state">, {{this.detailService.venueData._embedded.venues[0].state.name}}</span></td>
+        </tr>
+        <tr *ngIf="this.detailService.venueData._embedded.venues[0].ada">
+          <td class="name">Phone Number</td>
+          <td class="cont"><span *ngIf="this.detailService.venueData._embedded.venues[0].ada.adaPhones">{{this.detailService.venueData._embedded.venues[0].ada.adaPhones}}</span><span *ngIf="!this.detailService.venueData._embedded.venues[0].ada.adaPhones">N/A</span></td>
+        </tr>
+        <tr *ngIf="this.detailService.venueData._embedded.venues[0].boxOfficeInfo">
+          <td class="name">Open Hours</td>
+          <td class="cont"><span *ngIf="this.detailService.venueData._embedded.venues[0].boxOfficeInfo.openHoursDetail">{{this.detailService.venueData._embedded.venues[0].boxOfficeInfo.openHoursDetail}}</span><span *ngIf="!this.detailService.venueData._embedded.venues[0].boxOfficeInfo.openHoursDetail">N/A</span></td>
+        </tr>
+        <tr *ngIf="this.detailService.venueData._embedded.venues[0].generalInfo">
+          <td class="name">General Rule</td>
+          <td class="cont"><span *ngIf="this.detailService.venueData._embedded.venues[0].generalInfo.generalRule">{{this.detailService.venueData._embedded.venues[0].generalInfo.generalRule}}</span><span *ngIf="!this.detailService.venueData._embedded.venues[0].generalInfo.generalRule">N/A</span></td>
+        </tr>
+        <tr *ngIf="this.detailService.venueData._embedded.venues[0].generalInfo">
+          <td class="name">Child Rule</td>
+          <td class="cont"><span *ngIf="this.detailService.venueData._embedded.venues[0].generalInfo.childRule">{{this.detailService.venueData._embedded.venues[0].generalInfo.childRule}}</span><span *ngIf="!this.detailService.venueData._embedded.venues[0].generalInfo.childRule">N/A</span></td>
+        </tr>
+      </table>
+
+
+
+
+      <!-- <div class="row" *ngIf="this.detailService.venueData._embedded.venues[0].address">
+        <div class="col-2">Address</div>
+        <div class="col" *ngIf="this.detailService.venueData._embedded.venues[0].address.line1; else noadd">{{this.detailService.venueData._embedded.venues[0].address.line1}}</div>
+        <ng-template #noadd><div class="col">N/A</div></ng-template>
+      </div>
+      <div class="row" *ngIf="this.detailService.venueData._embedded.venues[0].city">
+        <div class="col-2">City</div>
+        <div class="col-10" *ngIf="this.detailService.venueData._embedded.venues[0].state; else nostate">{{this.detailService.venueData._embedded.venues[0].city.name}}, {{this.detailService.venueData._embedded.venues[0].state.name}}</div>
+        <ng-template #nostate><div class="col">{{this.detailService.venueData._embedded.venues[0].city.name}}</div></ng-template>
+      </div>
+      <div class="row" *ngIf="this.detailService.venueData._embedded.venues[0].ada">
+        <div class="col-2">Phone Number</div>
+        <div class="col-10" *ngIf="this.detailService.venueData._embedded.venues[0].ada.adaPhones; else nophone">{{this.detailService.venueData._embedded.venues[0].ada.adaPhones}}</div>
+        <ng-template #nophone><div class="col">N/A</div></ng-template>
+      </div>
+      <div class="row" *ngIf="this.detailService.venueData._embedded.venues[0].boxOfficeInfo">
+        <div class="col-2">Open Hours</div>
+        <div class="col-10" *ngIf="this.detailService.venueData._embedded.venues[0].boxOfficeInfo.openHoursDetail; else nohour">{{this.detailService.venueData._embedded.venues[0].boxOfficeInfo.openHoursDetail}}</div>
+        <ng-template #nohour><div class="col">N/A</div></ng-template>
+      </div>
+      <div class="row" *ngIf="this.detailService.venueData._embedded.venues[0].generalInfo">
+        <div class="col-2">General Rule</div>
+        <div class="col-10" *ngIf="this.detailService.venueData._embedded.venues[0].generalInfo.generalRule; else nogen">{{this.detailService.venueData._embedded.venues[0].generalInfo.generalRule}}</div>
+        <ng-template #nogen><div class="col">N/A</div></ng-template>
+      </div>
+      <div class="row" *ngIf="this.detailService.venueData._embedded.venues[0].generalInfo">
+        <div class="col-2">Child Rule</div>
+        <div class="col-10" *ngIf="this.detailService.venueData._embedded.venues[0].generalInfo.childRule; else nochi">{{this.detailService.venueData._embedded.venues[0].generalInfo.childRule}}</div>
+        <ng-template #nochi><div class="col">N/A</div></ng-template>
+      </div> -->
+
+
+
+
+
+      <agm-map [zoom]="14" [latitude]="this.detailService.location.latitude" [longitude]="this.detailService.location.longitude">
+        <agm-marker [latitude]="this.detailService.location.latitude" [longitude]="this.detailService.location.longitude">
+            <!-- <agm-info-window>
+              <div class="mapheader">{{this.detailService.venueData._embedded.venues[0].name}}</div>
+              <p *ngIf="this.detailService.venueData._embedded.venues[0].address.line1">{{this.detailService.venueData._embedded.venues[0].address.line1}}</p>
+              <div *ngIf="this.detailService.venueData._embedded.venues[0].city">
+                <div *ngIf="this.detailService.venueData._embedded.venues[0].state; else nostate">{{this.detailService.venueData._embedded.venues[0].city.name}}, {{this.detailService.venueData._embedded.venues[0].state.name}} {{this.detailService.venueData._embedded.venues[0].postalCode}}</div>
+                <ng-template #nostate><div>{{this.detailService.venueData._embedded.venues[0].city.name}} {{this.detailService.venueData._embedded.venues[0].postalCode}}</div></ng-template>
+              </div>
+              <p><a href="https://www.google.com/maps/search/?api=1&query={{this.detailService.locquery}}" target="_blank">View On Google Maps</a></p>
+            </agm-info-window> -->
+        </agm-marker>
+      </agm-map>
+  </div>
+</div>

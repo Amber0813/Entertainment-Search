@@ -1,0 +1,34 @@
+/* .result {
+    margin: auto;
+    width: 1000px;
+} */
+.resultbuttons {
+    margin: auto;
+    text-align: center;
+}
+.button {
+    text-align: right;
+}
+/* .table th, .table td{
+    padding-left: 20px; 
+    padding-right: 5px; 
+
+} */
+.table {
+    margin: auto;
+}
+.eventbtn {
+    border: 0;
+}
+.highlighted td {
+    background-color: rgb(255, 249, 179) !important;
+  }
+  /* .anc {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+
+  } */
+.col-sm-9 {
+    margin: auto;
+}

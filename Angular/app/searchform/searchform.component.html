@@ -1,0 +1,55 @@
+<div class="container jumbotron">
+  <p sclass="col-sm" style="text-align:center">Entertainment Event Ticket Search</p>
+  <!-- <div class="wrapform form-group"> -->
+   <form class="form" (ngSubmit)="onSubmit()">
+      <div class="row form-group">
+        <div class="col-sm-3">Keyword<span style="color: red">*</span></div>
+        <div class="col-sm-8">
+          <input type="text" name="keyword" id="keyword" class="form-control" [class]="red" required minlength="1" placeholder="Enter Artist, Team or Event Name(eg. Lakers)" value="" matInput [(ngModel)]="form.keyword"
+            #keyword="ngModel" [matAutocomplete]="auto"  (ngModelChange)="doFilter()" required>
+            <div *ngIf="(keyword.invalid || checkspace()) && (keyword.dirty || keyword.touched)" class="alert">Please enter a word.</div>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let autoComp of autoComps | async" [value]="autoComp.name">
+              {{ autoComp.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </div>      
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-3">Category</div>
+        <div class="col-sm-4"><select name="category" id="category" class="form-control" [(ngModel)]="form.category" #category="ngModel">
+            <option *ngFor="let event of events" [value]="event">{{event}}</option>
+        </select></div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-3">Distance</div>
+        <div class="col-sm-4">
+          <input type="number" name="distance" id="distance" class="form-control" placeholder="10" value="" [(ngModel)]="form.distance" #distance="ngModel">
+        </div>
+        <div class="col-sm-3"><select name="unit" id="unit" class="form-control" [(ngModel)]="form.unit">
+            <option *ngFor="let unit of units" [value]="unit">{{unit}}</option>
+          </select></div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-3">From<span style="color: red">*</span></div>
+        <div class="col-sm-8"><input type="radio" name="location" id="here" [value]="locs[0]" [(ngModel)]="form.location" checked>Current location</div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-8"><input type="radio" name="location" id="locinput" [value]="locs[1]" [(ngModel)]="form.location">Other. Please sepcify:</div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-8"><input type="text" class="form-control" name="specloc"  required minlength="1" [(ngModel)]="form.linput" [disabled]="isDisabled()" #specloc="ngModel">
+          <div *ngIf="specloc.invalid && (specloc.dirty || specloc.touched)" class="alert">Please enter a location.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div><button type="submit"  class="btn btn-primary" [disabled]="geojson || form.keyword=='' || (form.location=='locinput'&&form.linput=='')"><i class="material-icons md-12">search</i>Search</button><!-- name="search" value="search" -->
+          <button type="button" class="btn btn-outline-primary" (click)="onClear(keyword,specloc)"><i class="material-icons md-12">clear_all</i>Clear</button>
+        </div>
+    </div>
+      <input type="hidden" name="gjson" id="gjson">
+  </form>
+  <!-- </div> -->
+</div>
