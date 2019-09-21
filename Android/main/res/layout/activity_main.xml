@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--<TabHost-->
+        <!--android:id="@+id/tabHost"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="1.0">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TabWidget-->
+                <!--android:id="@android:id/tabs"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#03A9F4" />-->
+
+            <!--<FrameLayout-->
+                <!--android:id="@android:id/tabcontent"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_below="@android:id/tabs">-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/search"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/keyword"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginStart="5dp"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:text="Keyword" />-->
+
+                    <!--<AutoCompleteTextView-->
+                        <!--android:id="@+id/autoCompleteTextView"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:hint="Enter keyword" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/category"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginStart="5dp"-->
+                        <!--android:text="Category" />-->
+
+                    <!--<Spinner-->
+                        <!--android:id="@+id/spinnerCategory"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/Distance"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginStart="5dp"-->
+                        <!--android:text="Distance" />-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/inputDistance"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:ems="10"-->
+                        <!--android:inputType="number" />-->
+
+                    <!--<Spinner-->
+                        <!--android:id="@+id/spinnerUnit"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/from"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="From" />-->
+
+                    <!--<RadioGroup-->
+                        <!--android:id="@+id/locgroup"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content">-->
+
+                        <!--<RadioButton-->
+
+                            <!--android:id="@+id/current"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:checked="true"-->
+                            <!--android:text="Current location" />-->
+
+                        <!--<RadioButton-->
+                            <!--android:id="@+id/custom"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:text="Other. Specify location" />-->
+                    <!--</RadioGroup>-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/inputloc"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginStart="30dp"-->
+                        <!--android:ems="10"-->
+                        <!--android:inputType="textPersonName" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="TextView" />-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal">-->
+
+                        <!--<Button-->
+                            <!--android:id="@+id/searchButton"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:text="SEARCH" />-->
+
+                        <!--<Button-->
+                            <!--android:id="@+id/clearButton"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:text="CLEAR" />-->
+                    <!--</LinearLayout>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/favourite"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical">-->
+
+                <!--</LinearLayout>-->
+
+
+            <!--</FrameLayout>-->
+        <!--</LinearLayout>-->
+    <!--</TabHost>-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/maintb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#03A9F4"
+            app:tabSelectedTextColor="#ffffff"
+            app:tabTextColor="#8ED8F9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favourite" />
+
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mainvp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
